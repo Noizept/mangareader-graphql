@@ -2,17 +2,20 @@ const Manga = require("./../mongo/Models/Manga").Manga
 const graphql = require("graphql")
 const axiosME = require("../mangaSources/mangaEden")
 
-
 const resolvers = {
-
-
     Query: {
         mangas: async (obj, args, context, info) =>
-            args.keyword ?
-                await Manga.find({ title: { $regex: args.keyword, $options: 'si' } }).sort({ hits: -1 }) :
-                await Manga.find({}).sort({ lastUpdated: -1 })
-        ,
+            args.keyword
+                ? await Manga.find({
+                      title: { $regex: args.keyword, $options: "si" }
+                  }).sort({ hits: -1 })
+                : await Manga.find({}).sort({ lastUpdated: -1 }),
         manga: async (obj, args, context, info) => await Manga.findById(args.id)
+    },
+    MangaStatus: {
+        COMPLETED: 2,
+        ONGOING: 1,
+        SUSPENDED: 0
     },
 
     Manga: {
@@ -24,9 +27,8 @@ const resolvers = {
                 chapters: res.data.chapters,
                 id: mangaObjec.id
             }
-
         }
     }
-};
+}
 
 module.exports = resolvers
