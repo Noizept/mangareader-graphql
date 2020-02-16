@@ -29,6 +29,13 @@ const typeDefs = gql`
         title: String!
         lastUpdated: Date!
         number: String!
+        images: [ChapterImage!]!
+    }
+
+    type ChapterImage {
+        height: Int!
+        width: Int!
+        url: String!
     }
 
     # The "Query" type is special: it lists all of the available queries that

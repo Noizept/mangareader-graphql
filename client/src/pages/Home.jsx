@@ -59,6 +59,9 @@ const Home = () => {
                         {manga.status}
                     </Tag>
                 </Link>
+                fdfdf
+                dfdfdf
+                dfdf
             </AutoComplete.Option>
         ))
 

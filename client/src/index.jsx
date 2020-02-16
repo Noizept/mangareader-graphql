@@ -19,7 +19,7 @@ const App = () => {
             <Switch>
                 <Route
                     component={Manga}
-                    path="/:mangaId([a-z0-9]{24})-:mangaName([a-z-]+)"
+                    path="/:mangaId([a-z0-9]{24})-:mangaName([a-z0-9-]+)"
                 />
 
                 <Route component={Home} path="/" />

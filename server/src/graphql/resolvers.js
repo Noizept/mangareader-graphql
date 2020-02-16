@@ -28,6 +28,14 @@ const resolvers = {
                 id: mangaObjec.id
             }
         }
+    },
+    Chapter: {
+        images: async chapterObj => {
+            const res = await axiosME.fetchChapterImages({
+                chapterId: chapterObj.id
+            })
+            return res.data.images
+        }
     }
 }
 
